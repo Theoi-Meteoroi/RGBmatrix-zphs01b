@@ -22,7 +22,7 @@ uart.reset_input_buffer()  # flush input buffer
 def ReadSample():
     """
     Q&A mode requires a command to obtain a reading sample
-    Returns: int PM1, int PM25, int PM10
+    Returns: int
     """
     uart.reset_input_buffer()
     uart.write(b"\xFF\x01\x86\x00\x00\x00\x00\x00\x79")
@@ -176,6 +176,4 @@ while True:
         print("----------")
     except (ValueError, RuntimeError) as e:
         print("Some error occured, retrying! -", e)
-
-    # time.sleep(3 * 60)  # wait 3 minutes
     time.sleep(10)
